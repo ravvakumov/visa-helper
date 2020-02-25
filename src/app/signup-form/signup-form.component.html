@@ -1,0 +1,16 @@
+<form (ngSubmit)="signup()" *ngIf="confirmEmail == false" class="text-center">
+  <input type="email" name="email" placeholder="Email" [(ngModel)]="email" required="true">
+  <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required="true">
+  <input type="password" name="confirmPassword" placeholder="Confirm password" [(ngModel)]="confirmPassword" required="true">
+
+  <span *ngIf="isConfirmedPassword == false">Login or password incorrect</span>
+
+  <button class="btn" type="submit">Sign up</button>
+</form>
+
+<div *ngIf="confirmEmail == true">
+  <span>Check email and confirm</span>
+  <a routerLink="/login">
+    <span>Log in</span>
+  </a>
+</div>

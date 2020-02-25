@@ -1,0 +1,12 @@
+<div class="text-center">
+  <form class="form-signin">
+    <input type="email" name="lgn" placeholder="login" class="form-control" [(ngModel)]="login" required>
+    <input type="password" name="ps" placeholder="password" class="form-control" [(ngModel)]="psw" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+    <span *ngIf="incorrect == true">Login or password incorrect</span>
+
+    <a routerLink="/signup">
+      <span>Sign up</span>
+    </a>
+  </form>
+</div>
