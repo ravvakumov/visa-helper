@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -20,7 +21,8 @@ import {AppRoutingModule} from './app-routing.module';
     BrowserModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ButtonsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

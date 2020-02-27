@@ -1,12 +1,12 @@
-<div class="text-center">
-  <form class="form-signin">
-    <input type="email" name="lgn" placeholder="login" class="form-control" [(ngModel)]="login" required>
-    <input type="password" name="ps" placeholder="password" class="form-control" [(ngModel)]="psw" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-    <span *ngIf="incorrect == true">Login or password incorrect</span>
-
-    <a routerLink="/signup">
-      <span>Sign up</span>
-    </a>
+<div class="form-signin" >
+  <form (ngSubmit)="logIn(login, psw)" class="text-center" action="">
+    <input type="email" name="lgn" placeholder="login" class="form-control" [(ngModel)]="login" required />
+<!--    <input type="password" name="ps" placeholder="password" class="form-control" [(ngModel)]="psw" required />-->
+    <input type="text" name="ps" placeholder="password" class="form-control" [(ngModel)]="psw" required />
+    <button class="btn btn-lg btn-primary btn-block">Log in</button>
+    <span class="incorrectSpan" *ngIf="incorrect == true">Login or password incorrect</span>
   </form>
+  <a routerLink="/signup">
+    <button class="btn-lg btn-default btn-block">Sign up</button>
+  </a>
 </div>
