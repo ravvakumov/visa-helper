@@ -22,7 +22,7 @@ export class SignupFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup() {
+  signup(email: string, password: string) {
     if (this.password === this.confirmPassword) {
       console.log('signed up; email confirmation');
       this.confirmEmail = true;

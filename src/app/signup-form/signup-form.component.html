@@ -1,13 +1,33 @@
 <div class="form-signin">
-  <form (ngSubmit)="signup()" *ngIf="confirmEmail == false" class="text-center">
-    <input type="email" name="email" placeholder="Email" class="form-control" [(ngModel)]="email" required>
-    <input type="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password" required>
+  <form #signupForm="ngForm" (ngSubmit)="signup(email, password)" *ngIf="confirmEmail == false" class="text-center">
+    <input type="email" name="email" placeholder="Email" class="form-control" [(ngModel)]="email" #eml="ngModel" required email>
+    <div *ngIf="eml.invalid && (eml.dirty || eml.touched)" class="alert alert-danger">
+      <div *ngIf="eml.errors.required">
+        Email is required
+      </div>
+      <div *ngIf="eml.errors.email">
+        Email is not valid
+      </div>
+    </div>
+
+    <input type="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password" #pwd="ngModel" required >
+    <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+      <div *ngIf="pwd.errors.required">
+        Password is required
+      </div>
+    </div>
+
     <input type="password" name="confirmPassword" placeholder="Confirm password" class="form-control"
-           [(ngModel)]="confirmPassword" required>
+           [(ngModel)]="confirmPassword" #confirmPwd="ngModel" required >
+    <div *ngIf="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched)" class="alert alert-danger">
+      <div *ngIf="confirmPwd.errors.required">
+        Confirmation of password is required
+      </div>
+    </div>
 
     <span class="incorrectSpan" *ngIf="isConfirmedPassword == false">Login or password incorrect</span>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Send confirmation email</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signupForm.invalid">Send confirmation email</button>
   </form>
 
   <div *ngIf="confirmEmail == true">
