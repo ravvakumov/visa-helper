@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
 
   logIn(login, password) {
     console.log(login + password);
-    if (login === 'admin' && password === 'qwerty') {
+    if (login === 'admin@mail.ru' && password === 'qwerty') {
       console.log('logged in; go to main form');
       this.router.navigateByUrl('/main');
     } else {

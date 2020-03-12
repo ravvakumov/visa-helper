@@ -18,14 +18,18 @@
     </div>
 
     <input type="password" name="confirmPassword" placeholder="Confirm password" class="form-control"
-           [(ngModel)]="confirmPassword" #confirmPwd="ngModel" required >
+           [(ngModel)]="confirmPassword" #confirmPwd="ngModel" required appEqualsValidator>
     <div *ngIf="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched)" class="alert alert-danger">
       <div *ngIf="confirmPwd.errors.required">
         Confirmation of password is required
       </div>
+      <div *ngIf="confirmPwd.errors">
+        Confirmation of password is required
+      </div>
+      <div *ngIf="confirmPwd.errors.null">
+        Confirmation of password is requireddddd
+      </div>
     </div>
-
-    <span class="incorrectSpan" *ngIf="isConfirmedPassword == false">Login or password incorrect</span>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signupForm.invalid">Send confirmation email</button>
   </form>
