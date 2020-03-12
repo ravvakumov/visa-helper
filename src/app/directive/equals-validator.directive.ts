@@ -14,12 +14,12 @@ export class EqualsValidatorDirective implements Validator {
 
   constructor(
     // Get the control directive
-    private originControl: NgControl
+    // private originControl: NgControl
   ) {}
 
   validate(confirmationControl: AbstractControl): ValidationErrors | null {
     console.log(confirmationControl.value); // Value of confirmPassword input
-    console.log(this.originControl.value);
+    // console.log(this.originControl.value);
     return null;
   }
 }
