@@ -1,37 +1,50 @@
-<div class="form-signin">
-  <form #signupForm="ngForm" (ngSubmit)="signup(email, password)" *ngIf="confirmEmail == false" class="text-center">
-    <input type="email" name="email" placeholder="Email" class="form-control" [(ngModel)]="email" #eml="ngModel" required email>
-    <div *ngIf="eml.invalid && (eml.dirty || eml.touched)" class="alert alert-danger">
-      <div *ngIf="eml.errors.required">
-        Email is required
-      </div>
-      <div *ngIf="eml.errors.email">
-        Email is not valid
-      </div>
-    </div>
+<div class="form-signin cross-validation">
+  <form #signupForm="ngForm" (ngSubmit)="signup(email, password)" *ngIf="confirmEmail == false" class="text-center"
+        appEqualsValidator>
+    <div class="cross-validation"
+         [class.cross-validation-error]="signupForm.errors?.equalsValidator && (signupForm.touched || signupForm.dirty)">
 
-    <input type="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password" #pwd="ngModel" required >
-    <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="alert alert-danger">
-      <div *ngIf="pwd.errors.required">
-        Password is required
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" class="form-control" [(ngModel)]="email" #eml="ngModel"
+               required email>
+        <div *ngIf="eml.invalid && (eml.dirty || eml.touched)" class="alert alert-danger">
+          <div *ngIf="eml.errors.required">
+            Email is required
+          </div>
+          <div *ngIf="eml.errors.email">
+            Email is not valid
+          </div>
+        </div>
       </div>
-    </div>
 
-    <input type="password" name="confirmPassword" placeholder="Confirm password" class="form-control"
-           [(ngModel)]="confirmPassword" #confirmPwd="ngModel" required appEqualsValidator>
-    <div *ngIf="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched)" class="alert alert-danger">
-      <div *ngIf="confirmPwd.errors.required">
-        Confirmation of password is required
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" class="form-control" [(ngModel)]="password"
+               #pwd="ngModel" required>
+        <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+          <div *ngIf="pwd.errors.required">
+            Password is required
+          </div>
+        </div>
       </div>
-      <div *ngIf="confirmPwd.errors">
-        Confirmation of password is required
-      </div>
-      <div *ngIf="confirmPwd.errors.null">
-        Confirmation of password is requireddddd
-      </div>
-    </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signupForm.invalid">Send confirmation email</button>
+      <div class="form-group">
+        <input type="password" name="confirmPassword" placeholder="Confirm password" class="form-control"
+               [(ngModel)]="confirmPassword" #confirmPwd="ngModel" required>
+
+        <div *ngIf="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched)" class="alert alert-danger">
+          <div *ngIf="confirmPwd.errors.required">
+            Confirmation of password is required
+          </div>
+        </div>
+        <div *ngIf="signupForm.errors?.equalsValidator" class="alert alert-danger">
+          Passwords cannot match
+        </div>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="signupForm.invalid">Send confirmation
+        email
+      </button>
+    </div>
   </form>
 
   <div *ngIf="confirmEmail == true">
