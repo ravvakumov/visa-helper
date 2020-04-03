@@ -9,13 +9,15 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { MainFormComponent } from './main-form/main-form.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import { EqualsValidatorDirective } from './directive/equals-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     SignupFormComponent,
-    MainFormComponent
+    MainFormComponent,
+    EqualsValidatorDirective
   ],
   imports: [
     BrowserModule,
