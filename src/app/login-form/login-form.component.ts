@@ -11,7 +11,7 @@ export class LoginFormComponent implements OnInit {
   public login: any;
   public psw: any;
   public router: Router;
-  private incorrect: boolean;
+  public incorrect: boolean;
 
   constructor(router: Router) {
     this.router = router;
